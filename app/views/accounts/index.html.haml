@@ -5,22 +5,22 @@
     %table.table.table-bordered.table-hover.table-striped
       %thead
         %tr
-          %th Name
-          %th Due Date
-          %th Amount Due
+          %th{style: 'width:200px'} Name
+          %th{style: 'width:200px'} Due Date
+          %th{style: 'width:200px'} Amount Due
           %th Priority
           %th Paid?
           %th show
           %th edit
           %th destroy
-      %tbody
+      %tbody#user_account
         - @accounts.each do |account|
           %tr
             %td= best_in_place account, :name
             %td= best_in_place account, :due_date, type: :date, class: "datepicker"
             %td= best_in_place account, :amount_due, display_with: :number_to_currency
             %td= best_in_place account, :priority, type: :select, collection: [['High', 'High'], ['Medium', 'Medium'], ['Low', 'Low']]
-            %td= best_in_place account, :is_paid, type: :checkbox, collection: ['Yes', 'No']
+            %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
             %td= link_to 'Show', account
             %td= link_to 'Edit', edit_account_path(account)
             %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
