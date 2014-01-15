@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: pay_table_development
   pool: 5
-  username: pay_table
-  password:
+  username: abdulmiah
+  password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -48,13 +48,13 @@ test:
   encoding: unicode
   database: pay_table_test
   pool: 5
-  username: pay_table
-  password:
+  username: abdulmiah
+  password: 
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: pay_table_production
-  pool: 5
-  username: pay_table
-  password:
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: pay_table_production
+#   pool: 5
+#   username: abdulmiah
+#   password: 
