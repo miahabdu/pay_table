@@ -69,6 +69,10 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params[:account]
+      params.require(:account).permit(account_columns)
+    end
+    def account_columns
+      cols = Account.columns.map(&:name).map(&:to_sym) 
+      cols - [:created_at, :updated_at]
     end
 end

@@ -1,16 +1,29 @@
-%h1 Listing accounts
+.col-sm-12
+  .row
+    %h3 Listing accounts
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @accounts.each do |account|
-    %tr
-      %td= link_to 'Show', account
-      %td= link_to 'Edit', edit_account_path(account)
-      %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %table.table.table-bordered.table-hover.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Due Date
+          %th Amount Due
+          %th Priority
+          %th Paid?
+          %th show
+          %th edit
+          %th destroy
+      %tbody
+        - @accounts.each do |account|
+          %tr
+            %td= account.name
+            %td= account.due_date
+            %td= number_to_currency(account.amount_due) if account.amount_due
+            %td= account.priority
+            %td= account.is_paid
+            %td= link_to 'Show', account
+            %td= link_to 'Edit', edit_account_path(account)
+            %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

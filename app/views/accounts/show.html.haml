@@ -1,5 +1,9 @@
-%p#notice= notice
-
+%p= "Name: #{@account.name}"
+%p= "Link: #{@account.site_link}"
+%p= "Due Date: #{@account.due_date}"
+%p= "Amount Due: #{@account.amount_due}"
+%p= "Priority: #{@account.priority}"
+%p= "Paid?: #{@account.is_paid}"
 
 = link_to 'Edit', edit_account_path(@account)
 \|

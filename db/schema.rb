@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140115005908) do
     t.integer  "amount_due"
     t.string   "name"
     t.string   "site_link"
-    t.integer  "priority"
+    t.string   "priority"
     t.boolean  "is_paid"
     t.datetime "created_at"
     t.datetime "updated_at"
