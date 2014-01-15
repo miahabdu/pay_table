@@ -16,11 +16,11 @@
       %tbody
         - @accounts.each do |account|
           %tr
-            %td= account.name
-            %td= account.due_date
-            %td= number_to_currency(account.amount_due) if account.amount_due
-            %td= account.priority
-            %td= account.is_paid
+            %td= best_in_place account, :name
+            %td= best_in_place account, :due_date, type: :date, class: "datepicker"
+            %td= best_in_place account, :amount_due, display_with: :number_to_currency
+            %td= best_in_place account, :priority, type: :select, collection: [['High', 'High'], ['Medium', 'Medium'], ['Low', 'Low']]
+            %td= best_in_place account, :is_paid, type: :checkbox, collection: ['Yes', 'No']
             %td= link_to 'Show', account
             %td= link_to 'Edit', edit_account_path(account)
             %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -28,3 +28,4 @@
 %br
 
 = link_to 'New Account', new_account_path
+
