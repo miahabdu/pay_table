@@ -16,5 +16,4 @@
 //= require best_in_place
 //= require jquery.ui.all
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .

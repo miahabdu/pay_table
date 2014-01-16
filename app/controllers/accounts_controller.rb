@@ -5,6 +5,8 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     @accounts = Account.all
+    @account = Account.new
+    # render partial: 'row', account: Account.last
   end
 
   # GET /accounts/1
@@ -26,14 +28,18 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
 
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @account }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    # respond_to do |format|
+    #   if @account.save
+    #     format.html { redirect_to @account, notice: 'Account was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @account }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @account.errors, status: :unprocessable_entity }
+    #   end
+    if @account.save
+      render 'success_add'
+    else
+      render 'failure'
     end
   end
 
@@ -57,7 +63,7 @@ class AccountsController < ApplicationController
     @account.destroy
     respond_to do |format|
       format.html { redirect_to accounts_url }
-      format.json { head :no_content }
+      format.js { render "destroy"}
     end
   end
 

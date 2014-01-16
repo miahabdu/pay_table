@@ -3,5 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $.datepicker.setDefaults dateFormat: "yy-mm-dd"
-  
+  $('#addAccount').click ->
+    $('#newAccountForm').slideDown "fast", ->
+      $('#newAccountForm').show()
+    
+  $('#close').click ->
+    $('#newAccountForm').slideUp "fast", ->
+      $('#newAccountForm').hide()
   $('.best_in_place').best_in_place()
