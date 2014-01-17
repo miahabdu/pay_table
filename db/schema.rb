@@ -18,11 +18,14 @@ ActiveRecord::Schema.define(version: 20140115005908) do
 
   create_table "accounts", force: true do |t|
     t.date     "due_date"
-    t.integer  "amount_due"
+    t.string   "due_date_month"
+    t.string   "due_date_year"
+    t.decimal  "amount_due"
     t.string   "name"
-    t.string   "site_link"
+    t.string   "url"
     t.integer  "priority"
     t.boolean  "is_paid"
+    t.boolean  "is_reoccuring"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

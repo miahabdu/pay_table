@@ -28,6 +28,10 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
+    if account_params[:due_date]
+      @account.due_date_month = account_params[:due_date].to_date.month
+      @account.due_date_year = account_params[:due_date].to_date.year
+    end
 
     # respond_to do |format|
     #   if @account.save
@@ -49,6 +53,12 @@ class AccountsController < ApplicationController
   def update
     respond_to do |format|
       if @account.update(account_params)
+        if account_params[:due_date]
+          month = account_params[:due_date].to_date.month.to_s
+          year = account_params[:due_date].to_date.year.to_s
+          @account.update_attributes(due_date_month: month, due_date_year: year)
+        end
+
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { head :no_content }
       else

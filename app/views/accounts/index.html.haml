@@ -4,6 +4,12 @@
 
     #accounts= render 'accounts'
 
+    #analytics
+      - @today = Date.today
+      %p= "Total paid expenses for this month: #{number_to_currency( @accounts.where(is_paid: true).where(due_date_month: Date.today.month.to_s, due_date_year: Date.today.year.to_s).pluck(:amount_due).sum )}"
+      %p= "Total unpaid expenses for this month: #{number_to_currency( @accounts.where(is_paid: false).where(due_date_month: Date.today.month.to_s, due_date_year: Date.today.year.to_s).pluck(:amount_due).sum )}"
+      %p= "Total expenses for #{@today.strftime("%B %Y")}: #{number_to_currency( @accounts.where(due_date_month: Date.today.month.to_s, due_date_year: Date.today.year.to_s).pluck(:amount_due).sum )}"
+      %p= "Total expenses YTD: #{number_to_currency( @accounts.pluck(:amount_due).sum )}"
 %br
 
 %button.btn.btn-primary#addAccount New Account
@@ -15,9 +21,9 @@
       .col-lg-4
         = f.text_field :name
     .form-group
-      = f.label :site_link, class: 'col-lg-2 control-label'
+      = f.label :url, class: 'col-lg-2 control-label'
       .col-lg-4
-        = f.text_field :site_link
+        = f.text_field :url
     .form-group
       = f.label :due_date, class: 'col-lg-2 control-label'
       .col-lg-4
