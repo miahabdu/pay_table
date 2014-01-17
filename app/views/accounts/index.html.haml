@@ -29,7 +29,7 @@
     .form-group
       = f.label :priority, class: 'col-lg-2 control-label'
       .col-lg-4
-        = f.select :priority, options_for_select(['High', 'Medium', 'Low']), {}, include_blank: true
+        = f.select :priority, options_for_select([['High', 1], ['Medium', 2], ['Low', 3]]), {}
     .form-group
       = f.label :is_paid, class: 'col-lg-2 control-label'
       .col-lg-4

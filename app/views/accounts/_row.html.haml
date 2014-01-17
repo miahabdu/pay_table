@@ -2,7 +2,7 @@
   %td= best_in_place account, :name
   %td= best_in_place account, :due_date, type: :date, class: "datepicker"
   %td= best_in_place account, :amount_due, display_with: :number_to_currency
-  %td= best_in_place account, :priority, type: :select, collection: [['High', 'High'], ['Medium', 'Medium'], ['Low', 'Low']]
+  %td= best_in_place account, :priority, type: :select, collection: [[1, 'High'], [2, 'Medium'], [3, 'Low']]
   %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
   %td= link_to 'Show', account
   %td= link_to 'Edit', edit_account_path(account)

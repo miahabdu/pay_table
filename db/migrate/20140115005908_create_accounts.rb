@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :amount_due
       t.string :name
       t.string :site_link
-      t.string :priority
+      t.integer :priority
       t.boolean :is_paid
 
       t.timestamps
