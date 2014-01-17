@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  $(document).on "click", "#accounts th a", ->
+    $.getScript @href
+    false
+    
   $.datepicker.setDefaults dateFormat: "yy-mm-dd"
   $('#addAccount').click ->
     $('#newAccountForm').slideDown "fast", ->

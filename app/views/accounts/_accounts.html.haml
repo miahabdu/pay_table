@@ -1,0 +1,14 @@
+%table.table.table-bordered.table-hover.table-striped.sorty
+  %thead
+    %tr
+      %th{style: 'width:200px'}= sortable 'name'
+      %th{style: 'width:200px'}= sortable 'due_date'
+      %th{style: 'width:200px'}= sortable 'amount_due'
+      %th= sortable 'priority'
+      %th= sortable 'is_paid', 'Paid?'
+      %th show
+      %th edit
+      %th destroy
+  %tbody#user_account
+    - @accounts.each do |account|
+      = render 'row', account: account

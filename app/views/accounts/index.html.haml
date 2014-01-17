@@ -2,20 +2,7 @@
   .row
     %h3 Listing accounts
 
-    %table.table.table-bordered.table-hover.table-striped
-      %thead
-        %tr
-          %th{style: 'width:200px'} Name
-          %th{style: 'width:200px'} Due Date
-          %th{style: 'width:200px'} Amount Due
-          %th Priority
-          %th Paid?
-          %th show
-          %th edit
-          %th destroy
-      %tbody#user_account
-        - @accounts.each do |account|
-          = render 'row', account: account
+    #accounts= render 'accounts'
 
 %br
 

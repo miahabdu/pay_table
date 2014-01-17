@@ -1,10 +1,11 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.order(sort_column + " " + sort_direction)
     @account = Account.new
     # render partial: 'row', account: Account.last
   end
@@ -80,5 +81,13 @@ class AccountsController < ApplicationController
     def account_columns
       cols = Account.columns.map(&:name).map(&:to_sym) 
       cols - [:created_at, :updated_at]
+    end
+
+    def sort_column
+      Account.column_names.include?(params[:sort]) ? params[:sort] : "due_date"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
