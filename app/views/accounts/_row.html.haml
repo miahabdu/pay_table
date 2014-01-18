@@ -1,10 +1,18 @@
 %tr{id: "accountRow#{account.id}"}
   %td= best_in_place account, :name
-  %td= best_in_place account, :due_date, type: :date, class: "datepicker"
+  %td= best_in_place account, :due_date, type: :date, classes: "datepicker"
   %td= best_in_place account, :amount_due, type: :input, display_as: :mk_bal
   %td= best_in_place account, :priority, type: :select, collection: [[1, 'High'], [2, 'Medium'], [3, 'Low']]
   %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
-  %td= link_to account.url, "http://#{account.url}"
-  %td= link_to 'Show', account
-  %td= link_to 'Edit', edit_account_path(account)
-  %td= link_to 'Destroy', account, :method => :delete, remote: true#, :data => { :confirm => 'Are you sure?' }
+  %td
+    = link_to account.url, "http://#{account.url}"
+    %ul.actions
+      %li
+        = link_to edit_account_path(account) do
+          %i.table-edit
+      %li
+        = link_to account do
+          %i.table-settings
+      %li.last
+        = link_to account, :method => :delete, remote: true do#, :data => { :confirm => 'Are you sure?' }
+          %i.table-delete

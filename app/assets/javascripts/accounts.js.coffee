@@ -16,6 +16,9 @@ $ ->
     false
 
   $.datepicker.setDefaults dateFormat: "yy-mm-dd"
+  $(".datepicker").pickadate
+    format: "yyyy-mm-dd"
+
   $('#addAccount').click ->
     $('#newAccountForm').slideDown "fast", ->
       $('#newAccountForm').show()

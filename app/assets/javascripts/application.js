@@ -15,6 +15,8 @@
 //= require jquery.purr
 //= require best_in_place
 //= require jquery.ui.all
+//= require pickadate/picker
+//= require pickadate/picker.date
 //= require twitter/bootstrap
 //= require mustache
 //= require_tree .

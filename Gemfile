@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-multiselect-rails', :git => 'git://github.com/arojoal/jquery-multiselect-rails.git'
 gem 'jquery-ui-themes'
+gem 'pickadate-rails'
 
 gem 'best_in_place', github: 'bernat/best_in_place'
 

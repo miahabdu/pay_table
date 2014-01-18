@@ -2,12 +2,211 @@
 %html
   %head
     %title PayTable
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    .container
-      .row
-        .col-lg-12
-          = bootstrap_flash
-          = yield
+    / navbar
+    %header.navbar.navbar-inverse{role: "banner"}
+      .navbar-header
+        %button#menu-toggler.navbar-toggle{"data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{href: "index.html"}
+          %img{alt: "logo", src: "/assets/logo.png"}/
+      %ul.nav.navbar-nav.pull-right.hidden-xs
+        %li.hidden-xs.hidden-sm
+          %input.search{type: "text"}/
+        %li.notification-dropdown.hidden-xs.hidden-sm
+          %a.trigger{href: "#"}
+            %i.icon-warning-sign
+            %span.count 8
+          .pop-dialog
+            .pointer.right
+              .arrow
+              .arrow_border
+            .body
+              %a.close-icon{href: "#"}
+                %i.icon-remove-sign
+              .notifications
+                %h3 You have 6 new notifications
+                %a.item{href: "#"}
+                  %i.icon-signin
+                  New user registration
+                  %span.time
+                    %i.icon-time
+                    13 min.
+                %a.item{href: "#"}
+                  %i.icon-signin
+                  New user registration
+                  %span.time
+                    %i.icon-time
+                    18 min.
+                %a.item{href: "#"}
+                  %i.icon-envelope-alt
+                  New message from Alejandra
+                  %span.time
+                    %i.icon-time
+                    28 min.
+                %a.item{href: "#"}
+                  %i.icon-signin
+                  New user registration
+                  %span.time
+                    %i.icon-time
+                    49 min.
+                %a.item{href: "#"}
+                  %i.icon-download-alt
+                  New order placed
+                  %span.time
+                    %i.icon-time
+                    1 day.
+                .footer
+                  %a.logout{href: "#"} View all notifications
+        %li.notification-dropdown.hidden-xs.hidden-sm
+          %a.trigger{href: "#"}
+            %i.icon-envelope
+          .pop-dialog
+            .pointer.right
+              .arrow
+              .arrow_border
+            .body
+              %a.close-icon{href: "#"}
+                %i.icon-remove-sign
+              .messages
+                %a.item{href: "#"}
+                  %img.display{alt: "user", src: "/assets/contact-img.png"}/
+                  .name Alejandra Galván
+                  .msg
+                    There are many variations of available, but the majority have suffered alterations.
+                  %span.time
+                    %i.icon-time
+                    13 min.
+                %a.item{href: "#"}
+                  %img.display{alt: "user", src: "/assets/contact-img2.png"}/
+                  .name Alejandra Galván
+                  .msg
+                    There are many variations of available, have suffered alterations.
+                  %span.time
+                    %i.icon-time
+                    26 min.
+                %a.item.last{href: "#"}
+                  %img.display{alt: "user", src: "/assets/contact-img.png"}/
+                  .name Alejandra Galván
+                  .msg
+                    There are many variations of available, but the majority have suffered alterations.
+                  %span.time
+                    %i.icon-time
+                    48 min.
+                .footer
+                  %a.logout{href: "#"} View all messages
+        %li.dropdown
+          %a.dropdown-toggle.hidden-xs.hidden-sm{"data-toggle" => "dropdown", href: "#"}
+            Your account
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: "personal-info.html"} Personal info
+            %li
+              %a{href: "#"} Account settings
+            %li
+              %a{href: "#"} Billing
+            %li
+              %a{href: "#"} Export your data
+            %li
+              %a{href: "#"} Send feedback
+        %li.settings.hidden-xs.hidden-sm
+          %a{href: "personal-info.html", role: "button"}
+            %i.icon-cog
+        %li.settings.hidden-xs.hidden-sm
+          %a{href: "signin.html", role: "button"}
+            %i.icon-share-alt
+    / end navbar
+    / sidebar
+    #sidebar-nav
+      %ul#dashboard-menu
+        %li.active
+          .pointer
+            .arrow
+            .arrow_border
+          %a{href: "index.html"}
+            %i.icon-home
+            %span Home
+        %li
+          %a{href: "chart-showcase.html"}
+            %i.icon-signal
+            %span Charts
+        %li
+          %a.dropdown-toggle{href: "#"}
+            %i.icon-group
+            %span Users
+            %i.icon-chevron-down
+          %ul.submenu
+            %li
+              %a{href: "user-list.html"} User list
+            %li
+              %a{href: "new-user.html"} New user form
+            %li
+              %a{href: "user-profile.html"} User profile
+        %li
+          %a.dropdown-toggle{href: "#"}
+            %i.icon-edit
+            %span Forms
+            %i.icon-chevron-down
+          %ul.submenu
+            %li
+              %a{href: "form-showcase.html"} Form showcase
+            %li
+              %a{href: "form-wizard.html"} Form wizard
+        %li
+          %a{href: "gallery.html"}
+            %i.icon-picture
+            %span Gallery
+        %li
+          %a{href: "calendar.html"}
+            %i.icon-calendar-empty
+            %span Calendar
+        %li
+          %a.dropdown-toggle{href: "tables.html"}
+            %i.icon-th-large
+            %span Tables
+            %i.icon-chevron-down
+          %ul.submenu
+            %li
+              %a{href: "tables.html"} Custom tables
+            %li
+              %a{href: "datatables.html"} DataTables
+        %li
+          %a.dropdown-toggle.ui-elements{href: "#"}
+            %i.icon-code-fork
+            %span UI Elements
+            %i.icon-chevron-down
+          %ul.submenu
+            %li
+              %a{href: "ui-elements.html"} UI Elements
+            %li
+              %a{href: "icons.html"} Icons
+        %li
+          %a{href: "personal-info.html"}
+            %i.icon-cog
+            %span My Info
+        %li
+          %a.dropdown-toggle{href: "#"}
+            %i.icon-share-alt
+            %span Extras
+            %i.icon-chevron-down
+          %ul.submenu
+            %li
+              %a{href: "code-editor.html"} Code editor
+            %li
+              %a{href: "grids.html"} Grids
+            %li
+              %a{href: "signin.html"} Sign in
+            %li
+              %a{href: "signup.html"} Sign up
+    / end sidebar
+    / main container
+    .content
+      = bootstrap_flash
+      = yield
