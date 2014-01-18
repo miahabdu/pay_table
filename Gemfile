@@ -25,7 +25,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-multiselect-rails', :git => 'git://github.com/arojoal/jquery-multiselect-rails.git'
 gem 'jquery-ui-themes'
 
-gem 'best_in_place', github: 'aaronchi/best_in_place'
+gem 'best_in_place', github: 'bernat/best_in_place'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

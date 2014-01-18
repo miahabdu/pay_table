@@ -1,7 +1,7 @@
 %tr{id: "accountRow#{account.id}"}
   %td= best_in_place account, :name
   %td= best_in_place account, :due_date, type: :date, class: "datepicker"
-  %td= best_in_place account, :amount_due, display_with: :number_to_currency
+  %td= best_in_place account, :amount_due, type: :input, display_as: :mk_bal
   %td= best_in_place account, :priority, type: :select, collection: [[1, 'High'], [2, 'Medium'], [3, 'Low']]
   %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
   %td= link_to account.url, "http://#{account.url}"

@@ -60,7 +60,7 @@ class AccountsController < ApplicationController
         end
 
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip(@account) }
       else
         format.html { render action: 'edit' }
         format.json { render json: @account.errors, status: :unprocessable_entity }
@@ -76,6 +76,12 @@ class AccountsController < ApplicationController
       format.html { redirect_to accounts_url }
       format.js { render "destroy"}
     end
+  end
+
+  def account_totals
+    totals = AccountTotals.new(Account.all).totals
+
+    render :json => totals.to_json
   end
 
   private

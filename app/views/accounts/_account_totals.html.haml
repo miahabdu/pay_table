@@ -1,0 +1,13 @@
+%script{:type => 'text/template', :id => 'account_totals_template'}
+  %h2 Account Details
+  #account_table
+    #div#table_field
+      %div.field Total Paid Expenses For Current Month: ${{current_month_paid_expenses}}
+      %div.field Total Unpaid Expenses For Current Month: ${{current_month_unpaid_expenses}}
+      %div.field Total Expenses For Current Month: ${{current_month_total_expenses}}
+      %div.field Total Expenses YTD: ${{total_expenses_ytd}}
+    / #div#table_value
+    /   %div.value.money ${{current_month_paid_expenses}}
+    /   %div.value.money ${{current_month_unpaid_expenses}}
+    /   %div.value.money ${{current_month_total_expenses}}
+    /   %div.value.money ${{total_expenses_ytd}}

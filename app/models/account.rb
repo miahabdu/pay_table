@@ -6,4 +6,8 @@ class Account < ActiveRecord::Base
     end
   end
 
+  def mk_bal
+    ActionController::Base.helpers.number_to_currency(self.amount_due, :precision => 2)
+end
+
 end

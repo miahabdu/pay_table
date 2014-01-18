@@ -16,4 +16,5 @@
 //= require best_in_place
 //= require jquery.ui.all
 //= require twitter/bootstrap
+//= require mustache
 //= require_tree .

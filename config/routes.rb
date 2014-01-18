@@ -1,5 +1,9 @@
 PayTable::Application.routes.draw do
-  resources :accounts
+  resources :accounts do
+    collection do 
+      get :account_totals
+    end
+  end
 
   root 'welcome#index'
 
