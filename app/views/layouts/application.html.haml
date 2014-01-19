@@ -6,7 +6,7 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    / navbar
+    navbar
     %header.navbar.navbar-inverse{role: "banner"}
       .navbar-header
         %button#menu-toggler.navbar-toggle{"data-toggle" => "collapse", type: "button"}
@@ -129,6 +129,17 @@
     / end sidebar
     / main container
     .content
+      - if user_signed_in?
+        Logged in as
+        = succeed "." do
+          %strong= current_user.username
+        = link_to 'Edit profile', edit_user_registration_path
+        |
+        \#{link_to "Logout", destroy_user_session_path, method: :delete}
+      - else
+        = link_to "Sign up", new_user_registration_path
+        |
+        \#{link_to "Login", new_user_session_path}
       = render :partial => "/layouts/top_stats"
       = bootstrap_flash
       = yield

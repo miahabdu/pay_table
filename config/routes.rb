@@ -1,4 +1,5 @@
 PayTable::Application.routes.draw do
+  devise_for :users
   resources :accounts do
     collection do 
       get :account_totals
