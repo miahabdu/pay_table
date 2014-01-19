@@ -5,6 +5,12 @@ PayTable::Application.routes.draw do
     end
   end
 
+  resources :calendars do
+    collection do 
+      get :calendar_dates
+    end
+  end
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

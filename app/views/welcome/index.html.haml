@@ -1,36 +1,4 @@
 
-/ settings changer
-.skins-nav
-  %a.skin.first_nav.selected{href: "#"}
-    %span.icon
-    %span.text Default skin
-  %a.skin.second_nav{"data-file" => "assets/skins/dark.scss", href: "#"}
-    %span.icon
-    %span.text Dark skin
-/ upper main stats
-#main-stats
-  .row.stats-row
-    .col-md-3.col-sm-3.stat
-      .data
-        %span.number 2457
-        visits
-      %span.date Today
-    .col-md-3.col-sm-3.stat
-      .data
-        %span.number 3240
-        users
-      %span.date February 2013
-    .col-md-3.col-sm-3.stat
-      .data
-        %span.number 322
-        orders
-      %span.date This week
-    .col-md-3.col-sm-3.stat.last
-      .data
-        %span.number $2,340
-        sales
-      %span.date last 30 days
-/ end upper main stats
 #pad-wrapper
   / statistics chart built with jQuery Flot
   .row.chart

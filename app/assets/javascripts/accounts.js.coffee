@@ -11,6 +11,7 @@ $ ->
       data.total_expenses_ytd = parseFloat(data.total_expenses_ytd)
       rendered_template = Mustache.render($('#account_totals_template').html(), data)
       $('#analytics').html(rendered_template).show()
+  
   $(document).on "click", "#accounts th a", ->
     $.getScript @href
     false
@@ -30,6 +31,14 @@ $ ->
 
   $(document).ready ->
     cacluateAccountTotals()
+    $.get '/calendars/calendar_dates', (data) ->
+      $("#calendar").fullCalendar
+        header:
+          left: "month,agendaWeek,agendaDay"
+          center: "title"
+          right: "today prev,next"
+        events: data
+        eventBackgroundColor: '#278ccf'
     
   $(".best_in_place").bind "ajax:success", -> 
     cacluateAccountTotals()
