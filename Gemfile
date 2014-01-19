@@ -40,6 +40,7 @@ gem 'squeel'
 gem 'haml-rails'
 gem 'paperclip', '~> 3.0'
 gem 'devise'
+gem 'omniauth-twitter'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
