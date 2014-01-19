@@ -11,6 +11,8 @@ PayTable::Application.routes.draw do
     end
   end
 
+  resources :charts
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

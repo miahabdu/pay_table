@@ -18,5 +18,8 @@
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require twitter/bootstrap
+//= require raphael
+//= require morris
+//= require fullcalendar
 //= require mustache
 //= require_tree .

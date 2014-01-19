@@ -1,0 +1,20 @@
+#pad-wrapper
+  .row
+    .col-md-12
+      %h4.title
+        Account Pay Chart
+        %small Monthly spending
+    .col-md-12.chart
+      = content_tag :div, "", id: "account-chart", data: {accounts: Account.chart_data}, style: "height: 230px;"
+
+:javascript
+  $(function() {
+    return Morris.Line({
+      element: 'account-chart',
+      data: $('#account-chart').data('accounts'),
+      xkey: 'due_date',
+      ykeys: ['amount_due', 'paid', 'unpaid', 'total_unpaid'],
+      labels: ['Amount Due', 'Paid', 'Unpaid', 'Total Unpaid'],
+      preUnits: '$'
+    });
+  });

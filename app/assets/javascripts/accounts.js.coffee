@@ -31,14 +31,6 @@ $ ->
 
   $(document).ready ->
     cacluateAccountTotals()
-    $.get '/calendars/calendar_dates', (data) ->
-      $("#calendar").fullCalendar
-        header:
-          left: "month,agendaWeek,agendaDay"
-          center: "title"
-          right: "today prev,next"
-        events: data
-        eventBackgroundColor: '#278ccf'
     
   $(".best_in_place").bind "ajax:success", -> 
     cacluateAccountTotals()

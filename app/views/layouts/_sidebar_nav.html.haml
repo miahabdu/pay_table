@@ -8,8 +8,12 @@
       %a{href: "#{root_path}"}
         %i.icon-home
         %span Home
-    %li
-      %a{href: "chart-showcase.html"}
+    %li{:class => "#{'active' if current_page?(charts_path)}"}
+      - if current_page?(charts_path)
+        .pointer
+          .arrow
+          .arrow_border
+      %a{href: "#{charts_path}"}
         %i.icon-signal
         %span Charts
     %li{:class => "#{'active' if current_page?(calendars_path)}"}
