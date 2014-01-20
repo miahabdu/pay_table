@@ -5,7 +5,7 @@
         Account Pay Chart
         %small Monthly spending
     .col-md-12.chart
-      = content_tag :div, "", id: "account-chart", data: {accounts: Account.chart_data}, style: "height: 230px;"
+      = content_tag :div, "", id: "account-chart", data: {accounts: @accounts.chart_data}, style: "height: 230px;"
 
 :javascript
   $(function() {

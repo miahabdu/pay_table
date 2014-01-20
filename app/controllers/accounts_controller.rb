@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.order(sort_column + " " + sort_direction)
+    @accounts = Account.by_user(current_user.id).order(sort_column + " " + sort_direction)
     @account = Account.new
     # render partial: 'row', account: Account.last
   end
@@ -32,6 +32,7 @@ class AccountsController < ApplicationController
       @account.due_date_month = account_params[:due_date].to_date.month
       @account.due_date_year = account_params[:due_date].to_date.year
     end
+    @account.user_id = current_user.id
 
     # respond_to do |format|
     #   if @account.save
@@ -79,7 +80,7 @@ class AccountsController < ApplicationController
   end
 
   def account_totals
-    totals = AccountTotals.new(Account.all).totals
+    totals = AccountTotals.new(Account.by_user(current_user.id)).totals
 
     render :json => totals.to_json
   end

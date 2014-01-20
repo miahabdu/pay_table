@@ -1,4 +1,7 @@
 class Account < ActiveRecord::Base
+  belongs_to :user
+
+  scope :by_user, ->(id) { where(user_id: id)}
 
   def self.update_due_date
     all.each do |acc|
@@ -10,12 +13,12 @@ class Account < ActiveRecord::Base
     ActionController::Base.helpers.number_to_currency(self.amount_due, :precision => 2)
 end
 
- def self.chart_data(start = 3.weeks.ago.to_date)
+ def self.chart_data(start = (Date.today.beginning_of_month - 1.day).to_date)
     total_prices = prices_by_day(start)
     paid = where(is_paid: true).prices_by_day(start)
     unpaid = where(is_paid: false).prices_by_day(start)
     # total_unpaid = where(is_paid: false).prices_by_day(start)
-    (start..Date.today).map do |date|
+    (start..Date.today.end_of_month).map do |date|
       {
         due_date: date,
         amount_due: total_prices[date] || 0,
@@ -27,7 +30,7 @@ end
   end
 
   def self.prices_by_day(start)
-    plots = where(due_date: start.beginning_of_day..Time.zone.now.to_date)
+    plots = where(due_date: start.beginning_of_day..Time.zone.now.end_of_month.to_date)
     plots = plots.group("date(due_date)")
     plots = plots.select("due_date, sum(amount_due) as total_due")
     plots.each_with_object({}) do |plot, prices|
