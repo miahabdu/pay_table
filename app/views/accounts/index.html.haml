@@ -7,13 +7,13 @@
           Accounts
           %small Table sample
     .row.filter-block
-      .col-md-8.col-md-offset-5
-        .ui-select
-          %select
-            %option Filter users
-            %option Signed last 30 days
-            %option Active users
-        %input.search{type: "text"}/
+      .col-md-8.col-md-offset-10
+        / .ui-select
+        /   %select
+        /     %option Filter users
+        /     %option Signed last 30 days
+        /     %option Active users
+        / %input.search{type: "text"}/
         %a.btn-flat.new-product#addAccount + Add account
     .row
       #accounts= render 'accounts'
