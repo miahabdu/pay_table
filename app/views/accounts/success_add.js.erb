@@ -1,0 +1,23 @@
+$('#user_account').append("<%= j (render 'row', account: @account) %>")
+
+var cacluateAccountTotals;
+
+cacluateAccountTotals = function() {
+  return $.get('/accounts/account_totals', function(data) {
+    var rendered_template;
+    data.current_month_paid_expenses = parseFloat(data.current_month_paid_expenses);
+    data.current_month_unpaid_expenses = parseFloat(data.current_month_unpaid_expenses);
+    data.current_month_total_expenses = parseFloat(data.current_month_total_expenses);
+    data.total_expenses_ytd = parseFloat(data.total_expenses_ytd);
+    rendered_template = Mustache.render($('#account_totals_template').html(), data);
+    return $('#analytics').html(rendered_template).show();
+  });
+};
+
+$(document).bind("ajax:complete", function() {
+  return cacluateAccountTotals();
+});
+
+$(".best_in_place").bind("ajax:success", function() {
+  return cacluateAccountTotals();
+});

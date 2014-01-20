@@ -8,7 +8,18 @@
 //  background-color: #CCC;
 }
 
-table {
-  width: fixed;
-  word-wrap: break-word;
+
+
+.sorty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.sorty th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.sorty th .desc {
+  background-image: url(/assets/down_arrow.gif);
 }

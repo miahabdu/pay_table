@@ -1,1 +1,59 @@
-Welcome
+#pad-wrapper
+  .row
+    .col-md-12
+      %h4.title
+        Account Pay Chart
+        %small Monthly spending
+    .col-md-12.chart
+      = content_tag :div, "", id: "account-chart", data: {accounts: @accounts.chart_data}, style: "height: 230px;"
+  .table-products.section
+    .row.head
+      .col-md-12
+        %h4
+          Accounts
+          %small Current expenses
+    .row.filter-block
+      
+    .row
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-md-1
+              %span.line>
+              Name
+            %th.col-md-1
+              %span.line>
+              Due Date
+            %th.col-md-1
+              %span.line>
+              Amount Due
+            %th.col-md-1
+              %span.line>
+              Priority
+            %th.col-md-1
+              %span.line>
+              Paid?
+            %th.col-md-1
+              %span.line>
+              Site Link
+        %tbody
+          - @accounts.order(:due_date).each do |account|
+            %tr
+              %td= account.name
+              %td= account.due_date
+              %td= number_to_currency(account.amount_due)
+              %td= account.priority
+              %td= account.is_paid
+              %td=link_to account.url, "http://#{account.url}"
+
+:javascript
+  $(function() {
+    return Morris.Line({
+      element: 'account-chart',
+      data: $('#account-chart').data('accounts'),
+      xkey: 'due_date',
+      ykeys: ['amount_due', 'paid', 'unpaid', 'total_unpaid'],
+      labels: ['Amount Due', 'Paid', 'Unpaid', 'Total Unpaid'],
+      preUnits: '$'
+    });
+  });

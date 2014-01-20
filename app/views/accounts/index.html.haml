@@ -1,31 +1,55 @@
-.col-sm-12
-  .row
-    %h3 Listing accounts
 
-    %table.table.table-bordered.table-hover.table-striped
-      %thead
-        %tr
-          %th{style: 'width:200px'} Name
-          %th{style: 'width:200px'} Due Date
-          %th{style: 'width:200px'} Amount Due
-          %th Priority
-          %th Paid?
-          %th show
-          %th edit
-          %th destroy
-      %tbody#user_account
-        - @accounts.each do |account|
-          %tr
-            %td= best_in_place account, :name
-            %td= best_in_place account, :due_date, type: :date, class: "datepicker"
-            %td= best_in_place account, :amount_due, display_with: :number_to_currency
-            %td= best_in_place account, :priority, type: :select, collection: [['High', 'High'], ['Medium', 'Medium'], ['Low', 'Low']]
-            %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
-            %td= link_to 'Show', account
-            %td= link_to 'Edit', edit_account_path(account)
-            %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
+#pad-wrapper
+  .table-products
+    .row.head
+      .col-md-12
+        %h4
+          Accounts
+          %small Current expenses
+    .row.filter-block
+      .col-md-8.col-md-offset-10
+        / .ui-select
+        /   %select
+        /     %option Filter users
+        /     %option Signed last 30 days
+        /     %option Active users
+        / %input.search{type: "text"}/
+        %a.btn-flat.new-product#addAccount + Add account
+    .row
+      #accounts= render 'accounts'
 
-%br
+  #newAccountForm{style: "display: none;"}
+    = form_for(@account, html: { class: 'form-horizontal', role: 'form'}, remote: true) do |f|
+      .form-group
+        = f.label :name, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.text_field :name
+      .form-group
+        = f.label :url, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.text_field :url
+      .form-group
+        = f.label :due_date, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.text_field :due_date, class: 'datepicker input'
+      .form-group
+        = f.label :amount_due, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.text_field :amount_due
+      .form-group
+        = f.label :priority, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.select :priority, options_for_select([['High', 1], ['Medium', 2], ['Low', 3]]), {}
+      .form-group
+        = f.label :is_paid, class: 'col-lg-2 control-label'
+        .col-lg-4
+          = f.check_box :is_paid
 
-= link_to 'New Account', new_account_path
+      .form-group
+        .col-lg-offset-2.col-lg-4
+          = f.submit 'Save', class: 'btn btn-default'
+      .form-group
+        #close.col-lg-offset-2.col-lg-4=link_to 'close', '#'
+        
+
 

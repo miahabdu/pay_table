@@ -1,0 +1,39 @@
+#sidebar-nav
+  %ul#dashboard-menu
+    %li{:class => "#{'active' if current_page?(root_path)}"}
+      - if current_page?(root_path)
+        .pointer
+          .arrow
+          .arrow_border
+      %a{href: "#{root_path}"}
+        %i.icon-home
+        %span Home
+    %li{:class => "#{'active' if current_page?(charts_path)}"}
+      - if current_page?(charts_path)
+        .pointer
+          .arrow
+          .arrow_border
+      %a{href: "#{charts_path}"}
+        %i.icon-signal
+        %span Charts
+    %li{:class => "#{'active' if current_page?(calendars_path)}"}
+      - if current_page?(calendars_path)
+        .pointer
+          .arrow
+          .arrow_border
+      %a{href: "#{calendars_path}"}
+        %i.icon-calendar-empty
+        %span Calendar
+    %li{:class => "#{'active' if current_page?(accounts_path)}"}
+      - if current_page?(accounts_path)
+        .pointer
+          .arrow
+          .arrow_border
+      %a{href: "#{accounts_path}"}
+        %i.icon-th-large
+        %span Tables
+    %li
+      %a{href: "#{edit_user_registration_path}"}
+        %i.icon-cog
+        %span My Info
+/ end sidebar

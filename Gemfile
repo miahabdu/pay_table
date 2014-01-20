@@ -24,17 +24,23 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-multiselect-rails', :git => 'git://github.com/arojoal/jquery-multiselect-rails.git'
 gem 'jquery-ui-themes'
+gem 'pickadate-rails'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
+gem 'fullcalendar-rails'
 
-gem 'best_in_place', github: 'aaronchi/best_in_place'
+gem 'best_in_place', github: 'bernat/best_in_place'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
+gem 'squeel'
 gem 'haml-rails'
 gem 'paperclip', '~> 3.0'
+gem 'devise'
+gem 'omniauth-twitter'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -61,6 +67,7 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

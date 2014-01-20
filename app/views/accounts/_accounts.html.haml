@@ -1,0 +1,24 @@
+%table.table.table-hover.sorty
+  %thead
+    %tr
+      %th.col-md-1
+        %span.line>
+        = sortable 'name'
+      %th.col-md-1
+        %span.line>
+        = sortable 'due_date'
+      %th.col-md-1
+        %span.line>
+        = sortable 'amount_due'
+      %th.col-md-1
+        %span.line>
+        = sortable 'priority'
+      %th.col-md-1
+        %span.line>
+        = sortable 'is_paid', 'Paid?'
+      %th.col-md-2
+        %span.line>
+        Site link
+  %tbody#user_account
+    - @accounts.each do |account|
+      = render 'row', account: account

@@ -1,0 +1,21 @@
+%script{:type => 'text/template', :id => 'account_totals_template'}
+  .col-md-3.col-sm-3.stat
+    .data
+      %span.number ${{current_month_paid_expenses}}
+      paid expenses
+    %span.date This month
+  .col-md-3.col-sm-3.stat
+    .data
+      %span.number ${{current_month_unpaid_expenses}}
+      unpaid expenses
+    %span.date This month
+  .col-md-3.col-sm-3.stat
+    .data
+      %span.number ${{current_month_total_expenses}}
+      total expenses
+    %span.date This month
+  .col-md-3.col-sm-3.stat.last
+    .data
+      %span.number ${{total_expenses_ytd}}
+      total expenses
+    %span.date This year

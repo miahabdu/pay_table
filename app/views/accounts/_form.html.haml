@@ -5,9 +5,9 @@
     .col-lg-4
       = f.text_field :name
   .form-group
-    = f.label :site_link, class: 'col-lg-2 control-label'
+    = f.label :url, class: 'col-lg-2 control-label'
     .col-lg-4
-      = f.text_field :site_link
+      = f.text_field :url
   .form-group
     = f.label :due_date, class: 'col-lg-2 control-label'
     .col-lg-4
@@ -19,7 +19,7 @@
   .form-group
     = f.label :priority, class: 'col-lg-2 control-label'
     .col-lg-4
-      = f.select :priority, options_for_select(['High', 'Medium', 'Low']), {}, include_blank: true
+      = f.select :priority, options_for_select([['High', 1], ['Medium', 2], ['Low', 3]]), {}
   .form-group
     = f.label :is_paid, class: 'col-lg-2 control-label'
     .col-lg-4
@@ -28,10 +28,3 @@
   .form-group
     .col-lg-offset-2.col-lg-4
       = f.submit 'Save', class: 'btn btn-default'
-
-:javascript
-  $(document).ready(function() {
-    $('.datepicker').datepicker({
-      dateFormat: "yy-mm-dd"
-    });
-  });
