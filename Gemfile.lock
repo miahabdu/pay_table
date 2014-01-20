@@ -89,6 +89,8 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     fullcalendar-rails (1.6.4.0)
     haml (4.0.5)
       tilt
@@ -240,6 +242,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   factory_girl_rails
+  font-awesome-rails
   fullcalendar-rails
   haml-rails
   jbuilder (~> 1.2)

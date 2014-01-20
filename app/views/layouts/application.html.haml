@@ -16,51 +16,51 @@
         %a.navbar-brand{href: "#{root_path}"}
           %img{alt: "logo", src: "/assets/logo.png"}/
       %ul.nav.navbar-nav.pull-right.hidden-xs
-        %li.notification-dropdown.hidden-xs.hidden-sm
-          %a.trigger{href: "#"}
-            %i.icon-warning-sign
-            %span.count 8
-          .pop-dialog
-            .pointer.right
-              .arrow
-              .arrow_border
-            .body
-              %a.close-icon{href: "#"}
-                %i.icon-remove-sign
-              .notifications
-                %h3 You have 6 new notifications
-                %a.item{href: "#"}
-                  %i.icon-signin
-                  New user registration
-                  %span.time
-                    %i.icon-time
-                    13 min.
-                %a.item{href: "#"}
-                  %i.icon-signin
-                  New user registration
-                  %span.time
-                    %i.icon-time
-                    18 min.
-                %a.item{href: "#"}
-                  %i.icon-envelope-alt
-                  New message from Alejandra
-                  %span.time
-                    %i.icon-time
-                    28 min.
-                %a.item{href: "#"}
-                  %i.icon-signin
-                  New user registration
-                  %span.time
-                    %i.icon-time
-                    49 min.
-                %a.item{href: "#"}
-                  %i.icon-download-alt
-                  New order placed
-                  %span.time
-                    %i.icon-time
-                    1 day.
-                .footer
-                  %a.logout{href: "#"} View all notifications
+        / %li.notification-dropdown.hidden-xs.hidden-sm
+        /   %a.trigger{href: "#"}
+        /     %i.fa.fa-warning
+        /     %span.count 8
+        /   .pop-dialog
+        /     .pointer.right
+        /       .arrow
+        /       .arrow_border
+        /     .body
+        /       %a.close-icon{href: "#"}
+        /         %i.icon-remove-sign
+        /       .notifications
+        /         %h3 You have 6 new notifications
+        /         %a.item{href: "#"}
+        /           %i.icon-signin
+        /           New user registration
+        /           %span.time
+        /             %i.icon-time
+        /             13 min.
+        /         %a.item{href: "#"}
+        /           %i.icon-signin
+        /           New user registration
+        /           %span.time
+        /             %i.icon-time
+        /             18 min.
+        /         %a.item{href: "#"}
+        /           %i.icon-envelope-alt
+        /           New message from Alejandra
+        /           %span.time
+        /             %i.icon-time
+        /             28 min.
+        /         %a.item{href: "#"}
+        /           %i.icon-signin
+        /           New user registration
+        /           %span.time
+        /             %i.icon-time
+        /             49 min.
+        /         %a.item{href: "#"}
+        /           %i.icon-download-alt
+        /           New order placed
+        /           %span.time
+        /             %i.icon-time
+        /             1 day.
+        /         .footer
+        /           %a.logout{href: "#"} View all notifications
         
         %li.dropdown
           %a.dropdown-toggle.hidden-xs.hidden-sm{"data-toggle" => "dropdown", href: "#"}
@@ -77,11 +77,11 @@
             /   %a{href: "#"} Send feedback
         %li.settings.hidden-xs.hidden-sm
           %a{href: "#{edit_user_registration_path}", role: "button"}
-            %i.icon-cog
+            %i.fa.fa-cog
         %li.settings.hidden-xs.hidden-sm
           - if user_signed_in?
             = link_to destroy_user_session_path, method: :delete, role: :button do
-              %i.icon-share-alt
+              %i.fa.fa-share
     / end navbar
     / sidebar
     = render :partial => "/layouts/sidebar_nav"

@@ -28,6 +28,7 @@ gem 'pickadate-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 gem 'fullcalendar-rails'
+gem 'font-awesome-rails'
 
 gem 'best_in_place', github: 'bernat/best_in_place'
 
