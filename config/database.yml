@@ -51,10 +51,10 @@ test:
   username: abdulmiah
   password: 
 
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: pay_table_production
-#   pool: 5
-#   username: abdulmiah
-#   password: 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: pay_table_production
+  pool: 5
+  username: abdulmiah
+  password: 
