@@ -12,6 +12,7 @@
     .login-wrapper
       .box
         .content-wrap
+          = bootstrap_flash
           %h6 Sign Up
           = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
             = devise_error_messages!

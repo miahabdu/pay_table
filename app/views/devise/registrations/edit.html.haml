@@ -34,6 +34,7 @@
     / end navbar
     / main container .wide-content is used for this layout without sidebar :)
     .content.wide-content
+      = bootstrap_flash
       #pad-wrapper.settings-wrapper
         .row
           / avatar column
@@ -71,7 +72,7 @@
               .actions
                 = f.submit "Update", class: 'btn-glow primary'
                 %span OR
-                = link_to "Cancel", :back, class: 'reset'
+                = link_to "CANCEL", root_path, class: 'reset'
 
             %h5 Cancel my account
             %p
