@@ -26,13 +26,16 @@
             = f.text_field :amount_due, placeholder: 'Amount due', class: "form-control"
           .form-group{style: "width:155px; margin-right: 1%"}
             = f.text_field :url, placeholder: 'Acount URL', class: "form-control"
-          .form-group{style: "width:155px; margin-right: 1%"}
+          .form-group{style: "width:135px; margin-right: 1%"}
             = f.label :priority, style: "padding-right: 5%"
             = f.select :priority, options_for_select([['High', 1], ['Medium', 2], ['Low', 3]]), {}, placeholder: 'Priority', class: 'input-xs'
-          .form-group{style: "width:80px; margin-right: 1%"}
+          .form-group{style: "width:60px"}
             = f.label  :is_paid, 'Paid?', style: "padding-right: 5%"
             = f.check_box :is_paid
-          .form-group{style: "width:75px; margin-right: 1%"}
+          .form-group{style: "width:105px; margin-right: 1%"}
+            = f.label  :is_reoccuring, 'Reoccuring?', style: "padding-right: 5%"
+            = f.check_box :is_reoccuring
+          .form-group{style: "width:55px;"}
             = f.submit 'Save', class: 'btn btn-default btn-sm'
           .form-group
             #close=link_to 'close', '#'
