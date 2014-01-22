@@ -28,11 +28,10 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
-    if account_params[:due_date]
-      @account.due_date_month = account_params[:due_date].to_date.month
-      @account.due_date_year = account_params[:due_date].to_date.year
-    end
-    @account.user_id = current_user.id
+    # if account_params[:due_date]
+      
+    # end
+    
 
     # respond_to do |format|
     #   if @account.save
@@ -43,6 +42,10 @@ class AccountsController < ApplicationController
     #     format.json { render json: @account.errors, status: :unprocessable_entity }
     #   end
     if @account.save
+      @account.update_attributes(due_date_month: account_params[:due_date].to_date.month, 
+                                  due_date_year: account_params[:due_date].to_date.year,
+                                  user_id: current_user.id)
+
       render 'success_add'
     else
       render 'failure'

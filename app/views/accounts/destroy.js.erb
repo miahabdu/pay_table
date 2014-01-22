@@ -1,3 +1,4 @@
+
 var cacluateAccountTotals;
 
 cacluateAccountTotals = function() {
@@ -13,7 +14,11 @@ cacluateAccountTotals = function() {
 };
 
 $(document).bind("ajax:complete", function() {
-  $('#accountRow<%= @account.id %>').remove();
+  $('#accountRow<%= @account.id %>').effect("highlight", {}, 100, function() {
+    return $(this).fadeOut("fast", function() {
+      return $(this).remove();
+    });
+  });
   return cacluateAccountTotals();
 });
 

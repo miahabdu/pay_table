@@ -11,7 +11,7 @@
       .col-md-12
         %h4
           Accounts
-          %small Current expenses
+          %small= link_to 'Manage accounts', accounts_path
     .row.filter-block
       
     .row
@@ -42,8 +42,8 @@
               %td= account.name
               %td= account.due_date
               %td= number_to_currency(account.amount_due)
-              %td= account.priority
-              %td= account.is_paid
+              %td= account_priority(account)
+              %td= account.is_paid == true ? 'Yes' : 'No'
               %td=link_to account.url, "http://#{account.url}"
 
 :javascript

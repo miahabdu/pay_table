@@ -1,4 +1,7 @@
 class Account < ActiveRecord::Base
+  validates :amount_due, presence: true, numericality: true
+  validates :due_date, presence: true
+
   belongs_to :user
 
   scope :by_user, ->(id) { where(user_id: id)}

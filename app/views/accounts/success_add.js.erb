@@ -1,5 +1,7 @@
 $('#user_account').append("<%= j (render 'row', account: @account) %>")
 
+$('#user_account tr:last').effect("highlight", {}, 3000);
+
 var cacluateAccountTotals;
 
 cacluateAccountTotals = function() {

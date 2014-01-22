@@ -19,6 +19,7 @@ $ ->
   $.datepicker.setDefaults dateFormat: "yy-mm-dd"
   $(".datepicker").pickadate
     format: "yyyy-mm-dd"
+    editable: true
 
   $('#addAccount').click ->
     $('#newAccountForm').slideDown "fast", ->
@@ -34,3 +35,6 @@ $ ->
     
   $(".best_in_place").bind "ajax:success", -> 
     cacluateAccountTotals()
+
+  $("#newAccountForm").bind "ajax:success", ->
+    $(".form-control").val ""
