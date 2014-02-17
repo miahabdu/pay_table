@@ -50,7 +50,7 @@
               %td= account.due_date
               %td= number_to_currency(account.amount_due)
               %td= account_priority(account)
-              %td= account.is_paid == true ? 'Yes' : 'No'
+              %td= account.is_paid == true ? raw("<button class='btn btn-success btn-xs'><i class='fa fa-check'></i> Paid</button>") : raw("<button class='btn btn-danger btn-xs'><i class='fa fa-ban'></i> Unpaid</button>")
               %td=link_to account.url, "http://#{account.url}"
 
 :javascript

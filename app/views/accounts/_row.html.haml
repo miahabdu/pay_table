@@ -3,7 +3,7 @@
   %td= best_in_place account, :due_date, type: :date, classes: "datepicker"
   %td= best_in_place account, :amount_due, type: :input, display_as: :mk_bal
   %td= best_in_place account, :priority, type: :select, collection: [[1, 'High'], [2, 'Medium'], [3, 'Low']]
-  %td= best_in_place account, :is_paid, type: :checkbox, collection: ['No', 'Yes']
+  %td= best_in_place account, :is_paid, type: :checkbox, collection: [raw("<button class='btn btn-danger btn-xs'><i class='fa fa-check'></i> Mark as Paid</button>"), raw("<button class='btn btn-success btn-xs'><i class=''></i> Paid</button>")]
   %td
     = link_to account.url, "http://#{account.url}"
     %ul.actions
