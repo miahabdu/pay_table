@@ -19,12 +19,19 @@
   .form-group
     = f.label :priority, class: 'col-lg-2 control-label'
     .col-lg-4
-      = f.select :priority, options_for_select([['High', 1], ['Medium', 2], ['Low', 3]]), {}
+      = f.select :priority, [['High', 1], ['Medium', 2], ['Low', 3]], {include_blank: 'Select Priority'} 
+  .form-group
+    = f.label :category, class: 'col-lg-2 control-label'
+    .col-lg-4
+      = f.select :category, ['Mortgage/Rent', 'Credit Card', 'Entertainment', 'Insurance', 'Auto Payment', 'Food/Dining', 'Utilities', 'Health/Fitness', 'Loan'].sort, {include_blank: 'Select Category'}
   .form-group
     = f.label :is_paid, class: 'col-lg-2 control-label'
     .col-lg-4
       = f.check_box :is_paid
-
+  .form-group
+    = f.label :is_reoccuring, class: 'col-lg-2 control-label'
+    .col-lg-4
+      = f.check_box :is_reoccuring
   .form-group
     .col-lg-offset-2.col-lg-4
       = f.submit 'Save', class: 'btn btn-default'

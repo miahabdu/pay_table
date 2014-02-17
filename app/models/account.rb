@@ -4,7 +4,10 @@ class Account < ActiveRecord::Base
 
   belongs_to :user
 
-  scope :by_user, ->(id) { where(user_id: id)}
+  scope :by_user,           ->(id) { where(user_id: id)}
+  scope :for_current_month, ->     { where(due_date_month: Date.today.month.to_s, due_date_year: Date.today.year.to_s)}
+  scope :paid,              ->     { where(is_paid: true)}
+  scope :unpaid,            ->     { where(is_paid: false)}
 
   def self.update_due_date
     all.each do |acc|
@@ -14,7 +17,7 @@ class Account < ActiveRecord::Base
 
   def mk_bal
     ActionController::Base.helpers.number_to_currency(self.amount_due, :precision => 2)
-end
+  end
 
  def self.chart_data(start = (Date.today.beginning_of_month - 1.day).to_date)
     total_prices = prices_by_day(start)
@@ -43,6 +46,29 @@ end
 
   def self.current_total(date)
     total = where("is_paid = ? AND due_date <= ?", false, date).map(&:amount_due).sum
+  end
+
+  def self.counts
+    [{label: 'Unpaid Accounts', value: for_current_month.unpaid.count}, {label: 'Paid Accounts', value: for_current_month.paid.count}]
+  end
+
+  def self.category_percents
+    total = for_current_month.pluck(:amount_due).sum
+    categories = for_current_month.pluck(:category).uniq
+    results = []
+    categories.each do |c|
+      results << {label: c, value: (for_current_month.where(category: c).pluck(:amount_due).sum / total).to_f.round(2) * 100 }
+    end
+    results
+  end
+
+  def self.category_totals
+    categories = for_current_month.pluck(:category).uniq
+    results = []
+    categories.each do |c|
+      results << {label: c, value: for_current_month.where(category: c).pluck(:amount_due).sum.to_f }
+    end
+    results
   end
 
 end

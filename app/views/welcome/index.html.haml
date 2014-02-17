@@ -2,10 +2,17 @@
   .row
     .col-md-12
       %h4.title
-        Account Pay Chart
-        %small Monthly spending
-    .col-md-12.chart
-      = content_tag :div, "", id: "account-chart", data: {accounts: @accounts.chart_data}, style: "height: 230px;"
+        Account Analytics
+        %small= "#{Date.today.strftime("%B %Y")}"
+    .col-md-4.chart
+      %h5 Expense Allocation
+      = content_tag :div, "", id: "expenses_donut", data: {accounts: @accounts.category_percents}, style: "height: 250px;"
+    .col-md-4.chart
+      %h5 Paid vs. Unpaid
+      = content_tag :div, "", id: "paid_unpaid_donut", data: {accounts: @accounts.counts}, style: "height: 250px;"
+    .col-md-4.chart
+      %h5 Category Totals
+      = content_tag :div, "", id: "totals_donut", data: {accounts: @accounts.category_totals}, style: "height: 250px;"
   .table-products.section
     .row.head
       .col-md-12
@@ -48,12 +55,31 @@
 
 :javascript
   $(function() {
-    return Morris.Line({
-      element: 'account-chart',
-      data: $('#account-chart').data('accounts'),
-      xkey: 'due_date',
-      ykeys: ['amount_due', 'paid', 'unpaid', 'total_unpaid'],
-      labels: ['Amount Due', 'Paid', 'Unpaid', 'Total Unpaid'],
-      preUnits: '$'
+    return Morris.Donut({
+      element: "paid_unpaid_donut",
+      data: $('#paid_unpaid_donut').data('accounts'),
+      colors: ["#30a1ec", "#76bdee", "#c4dafe"]
+    });
+  });
+  
+  $(function() {
+    return Morris.Donut({
+      element: "expenses_donut",
+      data: $('#expenses_donut').data('accounts'),
+      colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+      formatter: function(y) {
+        return y + "%";
+      }
+    });
+  });
+
+  $(function() {
+    return Morris.Donut({
+      element: "totals_donut",
+      data: $('#totals_donut').data('accounts'),
+      colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+      formatter: function(y) {
+        return '$' + y;
+      }
     });
   });
