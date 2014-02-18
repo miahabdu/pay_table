@@ -1,8 +1,9 @@
 %tr{id: "accountRow#{account.id}"}
+  %td= account_category(account.category)
   %td= best_in_place account, :name
   %td= best_in_place account, :due_date, type: :date, classes: "datepicker"
   %td= best_in_place account, :amount_due, type: :input, display_as: :mk_bal
-  %td= best_in_place account, :priority, type: :select, collection: [[1, 'High'], [2, 'Medium'], [3, 'Low']]
+  %td= best_in_place account, :priority, type: :select, collection: [[1, raw("<button class='btn btn-danger btn-xs'><i class='fa fa-warning'></i> High</button>")], [2, raw("<button class='btn btn-warning btn-xs'><i class='fa fa-warning'></i> Medium</button>")], [3, raw("<button class='btn btn-info btn-xs'><i class='fa fa-warning'></i> Low</button>")]]
   %td= best_in_place account, :is_paid, type: :checkbox, collection: [raw("<button class='btn btn-danger btn-xs'><i class='fa fa-check'></i> Mark as Paid</button>"), raw("<button class='btn btn-success btn-xs'><i class=''></i> Paid</button>")]
   %td
     = link_to account.url, "http://#{account.url}"

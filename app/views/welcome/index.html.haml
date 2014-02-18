@@ -25,6 +25,7 @@
       %table.table.table-hover
         %thead
           %tr
+            %th{style: 'width:0.5%'}
             %th.col-md-1
               %span.line>
               Name
@@ -46,8 +47,9 @@
         %tbody
           - @accounts.order(:due_date).each do |account|
             %tr
+              %td= account_category(account.category)
               %td= account.name
-              %td= account.due_date
+              %td= account.due_date.strftime("%b %e")
               %td= number_to_currency(account.amount_due)
               %td= account_priority(account)
               %td= account.is_paid == true ? raw("<button class='btn btn-success btn-xs'><i class='fa fa-check'></i> Paid</button>") : raw("<button class='btn btn-danger btn-xs'><i class='fa fa-ban'></i> Unpaid</button>")

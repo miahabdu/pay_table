@@ -1,11 +1,11 @@
 module WelcomeHelper
   def account_priority(account)
     if account.priority == 1 
-      'High' 
+      raw("<button class='btn btn-danger btn-xs'><i class='fa fa-warning'></i> High</button>") 
     elsif account.priority == 2 
-      'Medium' 
+      raw("<button class='btn btn-warning btn-xs'><i class='fa fa-warning'></i> Medium</button>") 
     else 
-      'Low' 
+      raw("<button class='btn btn-info btn-xs'><i class='fa fa-warning'></i> Low</button>") 
     end  
   end
 end
