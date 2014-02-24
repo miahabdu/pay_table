@@ -11,6 +11,8 @@ class DueDateUpdater
     return false unless due_date_is_valid?
     x = @account.dup
     x.due_date = x.due_date + 1.month
+    x.due_date_month = x.due_date.month
+    x.due_date_year = x.due_date.year
     x.save
   end
 
