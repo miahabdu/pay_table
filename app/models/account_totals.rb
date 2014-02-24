@@ -26,7 +26,7 @@ class AccountTotals
   end
 
   def total_expenses_ytd
-    accounts.pluck(:amount_due).sum
+    accounts.where(due_date: Date.today.beginning_of_year..Date.today).pluck(:amount_due).sum
   end
 
   def totals
