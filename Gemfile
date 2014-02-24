@@ -62,6 +62,7 @@ group :test do
   gem 'simplecov-rcov', require: false
 end
 
+gem 'whenever', require: false
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
