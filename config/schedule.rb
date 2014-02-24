@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every '0 12 24 * *' do
-  runner "DueDateUpdater.new(Account.last).create_dup_record"
+  runner "Account.update_due_date"
 end
