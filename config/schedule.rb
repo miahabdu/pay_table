@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every '0 12 24 * *' do
+every '15 12 24 * *' do
   runner "Account.update_due_date"
 end
