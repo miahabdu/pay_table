@@ -4,7 +4,7 @@ class DueDateUpdater
   end
 
   def due_date_is_valid?
-    due_date_is_current_month || due_date_is_last_dec
+    due_date_is_current_month_and_year
   end
 
   def create_dup_record
@@ -13,27 +13,20 @@ class DueDateUpdater
     x.due_date = x.due_date + 1.month
     x.due_date_month = x.due_date.month
     x.due_date_year = x.due_date.year
+    x.is_paid = false
     x.save
   end
 
-  def due_date_is_current_month
-    @account.due_date.month == last_month && @account.due_date.year == current_year
+  def due_date_is_current_month_and_year
+    @account.due_date.month == current_month && @account.due_date.year == current_year
   end
 
-  def due_date_is_last_dec
-    @account.due_date.month == 12 && @account.due_date.year == current_year
-  end
-
-  def last_month
+  def current_month
     Date.today.month
   end
 
   def current_year
     Date.today.year
-  end
-
-  def first_of_the_month?
-    Date.today == Date.today.beginning_of_month
   end
 
 end

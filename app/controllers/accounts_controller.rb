@@ -5,7 +5,9 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.by_user(current_user.id).order(sort_column + " " + sort_direction)
+    @current_accounts = Account.by_user(current_user.id).for_current_month.order(sort_column + " " + sort_direction)
+    @future_accounts = Account.by_user(current_user.id).for_next_month
+    @previous_accounts = Account.by_user(current_user.id).for_last_month
     @account = Account.new
     # render partial: 'row', account: Account.last
   end

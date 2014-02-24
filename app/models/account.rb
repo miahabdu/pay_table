@@ -6,6 +6,8 @@ class Account < ActiveRecord::Base
 
   scope :by_user,           ->(id) { where(user_id: id)}
   scope :for_current_month, ->     { where(due_date_month: Date.today.month.to_s, due_date_year: Date.today.year.to_s)}
+  scope :for_last_month,    ->     { where(due_date: Date.today.beginning_of_year..Date.today.last_month.end_of_month)}
+  scope :for_next_month,    ->     { where(due_date_month: (Date.today.month + 1).to_s, due_date_year: (Date.today.year).to_s)}
   scope :paid,              ->     { where(is_paid: true)}
   scope :unpaid,            ->     { where(is_paid: false)}
 
