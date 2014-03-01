@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require jquery.purr
 //= require best_in_place
-//= require jquery.ui.all
+//= require jquery.ui.datepicker
+//= require jquery.ui.tooltip
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require twitter/bootstrap
