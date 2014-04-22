@@ -12,7 +12,7 @@ $ ->
       rendered_template = Mustache.render($('#account_totals_template').html(), data)
       $('#analytics').html(rendered_template).show()
   
-  $(document).on "click", "#accounts th a", ->
+  $(document).on "click", "#accounts th a, #previous_accounts .pagination a", ->
     $.getScript @href
     false
 
