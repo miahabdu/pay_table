@@ -2,13 +2,13 @@
   .row
     .col-md-12
       %h4.title
-        Account Pay Graph
+        Expense Pay Graph
         %small Monthly spending
     .col-md-12.chart
       = content_tag :div, "", id: "account-chart", data: {accounts: @accounts.chart_data}, style: "height: 230px;"
   .row.section
     .col-md-12
-      %h4.title
+      %h4.Expense
         Account Analytics
         %small= "#{Date.today.strftime("%B %Y")}"
     .col-md-4.chart
